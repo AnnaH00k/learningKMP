@@ -1,3 +1,11 @@
+![Last Commit](https://img.shields.io/github/last-commit/AnnaH00k/learningKMP?style=flat-square&color=purple)
+![Contributors](https://img.shields.io/github/contributors/AnnaH00k/learningKMP?style=flat-square&color=teal)
+![Repo Size](https://img.shields.io/github/repo-size/AnnaH00k/learningKMP?style=flat-square&color=gray)
+
+![Cute Cat Animation](https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif)
+
+
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM), Server.
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
