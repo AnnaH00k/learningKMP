@@ -63,6 +63,9 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
         }
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
     }
 }
 
