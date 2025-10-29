@@ -11,7 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import tech.hookin.learningkmp.ui.utils.Vh
+import tech.hookin.learningkmp.ui.utils.Vw
 import tech.hookin.learningkmp.ui.utils.getScreenHeightDp
+import tech.hookin.learningkmp.ui.utils.getScreenWidthDp
 import tech.hookin.learningkmp.ui.utils.toColorOrNull
 
 @Composable
@@ -23,12 +25,12 @@ fun MainPage(
     val backgroundColor = background.toColorOrNull() ?: Color.White
     val textColor = textColor.toColorOrNull() ?: Color.Black
 
-    val screenHeightDp = getScreenHeightDp()
+    val screenWidthDp = getScreenWidthDp()
 
-    val topPadding = if (screenHeightDp < 600.dp) {
-        Vh(10f)
-    } else {
+    val topPadding = if (screenWidthDp < 600.dp) {
         Vh(5f)
+    } else {
+        Vh(0f)
     }
 
     Box(
@@ -42,7 +44,7 @@ fun MainPage(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = topPadding, start = 4.dp, end = 4.dp, bottom = 4.dp),  // Content padding inside
+                .padding(top = topPadding, bottom = 4.dp),  // Content padding inside
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CompositionLocalProvider(
