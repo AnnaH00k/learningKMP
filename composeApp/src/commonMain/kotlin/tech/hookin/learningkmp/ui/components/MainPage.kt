@@ -17,11 +17,11 @@ import tech.hookin.learningkmp.ui.utils.toColorOrNull
 @Composable
 fun MainPage(
     background: String = "#FFFFFF",
-    text: String = "#000000",
+    textColor: String = "#000000",
     content: @Composable () -> Unit
 ) {
     val backgroundColor = background.toColorOrNull() ?: Color.White
-    val textColor = text.toColorOrNull() ?: Color.Black
+    val textColor = textColor.toColorOrNull() ?: Color.Black
 
     val screenHeightDp = getScreenHeightDp()
 
