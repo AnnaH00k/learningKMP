@@ -29,9 +29,11 @@ fun MainPage(
 
     val topPadding = if (screenWidthDp < 600.dp) {
         Vh(5f)
+
     } else {
         Vh(0f)
     }
+
 
     Box(
         modifier = Modifier
@@ -50,6 +52,9 @@ fun MainPage(
             CompositionLocalProvider(
                 LocalTextStyle provides MaterialTheme.typography.bodyMedium.copy(color = textColor)
             ) {
+                if (screenWidthDp > 600.dp) {
+                    Header()
+                }
                 content()
             }
             Spacer(modifier = Modifier.weight(1f))  // Fills to bottom

@@ -1,58 +1,53 @@
 package tech.hookin.learningkmp
 
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import tech.hookin.learningkmp.ui.components.CenteredRow
-import tech.hookin.learningkmp.ui.components.ChallengorHeadline
-import tech.hookin.learningkmp.ui.components.MainButton
-import tech.hookin.learningkmp.ui.components.MainPage
-import tech.hookin.learningkmp.ui.components.H2
-import tech.hookin.learningkmp.ui.components.Header
-import tech.hookin.learningkmp.ui.utils.Vh
-import tech.hookin.learningkmp.ui.utils.getScreenHeightDp
-import tech.hookin.learningkmp.ui.utils.getScreenWidthDp
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import tech.hookin.learningkmp.pages.Login
+import tech.hookin.learningkmp.pages.Register
+
+// Screen-Enum für Navigation
+enum class Screen {
+    HOME,
+    LOGIN,
+    REGISTER
+}
 
 @Composable
-@Preview
 fun App() {
+    var currentScreen by remember { mutableStateOf(Screen.HOME) }
 
-    MainPage(background = "#779F7F", textColor = "#202226") {
-        val screenWidthDp = getScreenWidthDp()
 
-        if (screenWidthDp > 600.dp) {
-            Header()
+        when (currentScreen) {
+            Screen.HOME -> {
+                Landingpage(
+                    NavigateToLogin = {
+                        currentScreen = Screen.LOGIN
+                    },
+                    NavigateToRegister = {
+                        currentScreen = Screen.REGISTER
+                    }
+                )
+            }
+            Screen.LOGIN -> {
+                Login(
+                    BackClick = {
+                        currentScreen = Screen.HOME
+                    }
+                )
+            }
 
-        } else {
-            Spacer(modifier = Modifier.height(Vh(10f)))
-
+            Screen.REGISTER -> {
+                Register(
+                    BackClick = {
+                        currentScreen = Screen.HOME
+                    }
+                )
+            }
         }
-
-        ChallengorHeadline()
-        H2("Find and create your next challenge")
-
-
-
-        CenteredRow {
-
-
-            MainButton(
-                text = "Login",
-                onClick = {/* add link */ },
-            )
-            MainButton(
-                text = "Register",
-                onClick = {/* add link */ },
-            )
-        }
-
-
-    }
 
 }
 

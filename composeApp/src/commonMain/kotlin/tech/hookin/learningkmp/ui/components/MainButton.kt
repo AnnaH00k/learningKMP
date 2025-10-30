@@ -31,7 +31,6 @@ fun MainButton(
     Box(
         modifier = modifier
             .padding(12.dp),
-        contentAlignment = Alignment.Center
     ) {
         Button(
             onClick = onClick,
