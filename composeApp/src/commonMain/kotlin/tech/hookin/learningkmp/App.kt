@@ -32,8 +32,6 @@ fun App() {
             Spacer(modifier = Modifier.height(Vh(10f)))
 
         }
-        H2(text = getScreenHeightDp().toString())
-        H2(text = getScreenWidthDp().toString())
 
         ChallengorHeadline()
         H2("Find and create your next challenge")

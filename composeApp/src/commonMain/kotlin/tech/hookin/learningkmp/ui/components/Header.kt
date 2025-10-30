@@ -1,7 +1,9 @@
 package tech.hookin.learningkmp.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import learningkmp.composeapp.generated.resources.Res
@@ -30,6 +33,7 @@ import org.jetbrains.compose.resources.painterResource
 fun Header() {
     val backgroundColor = HexToColor("#435A4D")
     val textColor = HexToColor("#779F7F")
+    val borderColor = HexToColor("#202226")
 
     var searchQuery by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -53,18 +57,11 @@ fun Header() {
                     .padding(top = 8.dp, bottom = 8.dp)
             )
 
-            // Search Bar
-            TextField(
-                value = searchQuery,
+            SearchBar(
+                searchQuery = searchQuery,
                 onValueChange = { searchQuery = it },
-                placeholder = { Text("Search", color = textColor.copy(alpha = 0.6f)) },
-                singleLine = true,
-
-                modifier = Modifier
-                    .widthIn(min = 150.dp, max = 300.dp)
-                    .height(36.dp)
-                    .background(color = backgroundColor, shape = RoundedCornerShape(8.dp))
             )
+
         }
     }
 }
