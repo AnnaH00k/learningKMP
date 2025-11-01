@@ -74,7 +74,6 @@ fun App() {
                     currentUser = newUser
                     currentScreen = Screen.DASHBOARD
                 }
-
             )
         }
 
