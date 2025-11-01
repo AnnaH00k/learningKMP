@@ -1,6 +1,8 @@
 package tech.hookin.learningkmp.ui.components
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -17,6 +19,9 @@ fun MainTextInput(
     label: String,
     modifier: Modifier = Modifier,
     outlineColorHex: String? = "#435A4D",
+    singleLine: Boolean = true,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default
 ) {
     val outlineColor = outlineColorHex?.let { HexToColor(it) } ?: Color(0x435A4D)
 
@@ -28,6 +33,9 @@ fun MainTextInput(
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = outlineColor,
             unfocusedBorderColor = outlineColor
-        )
+        ),
+        singleLine = singleLine,
+        keyboardOptions = keyboardOptions,
+        keyboardActions = keyboardActions
     )
 }

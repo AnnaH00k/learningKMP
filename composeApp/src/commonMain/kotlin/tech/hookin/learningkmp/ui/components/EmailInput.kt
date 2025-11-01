@@ -16,39 +16,39 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PasswordInput(
+fun EmailInput(
     onValueChange: (String) -> Unit,
-    passwordValue: String,
+    emailValue: String,
     onValidationChange: (Boolean) -> Unit,
     focusRequester: FocusRequester,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default
 ) {
     val errorState = remember { mutableStateOf<String?>(null) }
-    val passwordFocusRequester = remember { FocusRequester() }
+    val emailFocusRequester = remember { FocusRequester() }
+    val emailRegex = Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+    val forbiddenChars = "<>{}()[];:'\"\\/"
 
-
-    fun validatePassword(input: String): String? {
-        if (input.length < 6) {
-            return "Password must be at least 6 characters"
-        }
-        val forbiddenChars = "<>{}()[];:'\"\\/"
+    fun validateEmail(input: String): String? {
         if (input.any { it in forbiddenChars }) {
-            return "Password contains invalid characters"
+            return "Email contains invalid characters"
+        }
+        if (!emailRegex.matches(input)) {
+            return "Invalid email format"
         }
         return null
     }
 
     Column(modifier = Modifier.fillMaxWidth()) {
         MainTextInput(
-            value = passwordValue,
+            value = emailValue,
             onValueChange = { newValue ->
                 onValueChange(newValue)
-                val error = validatePassword(newValue)
+                val error = validateEmail(newValue)
                 errorState.value = error
                 onValidationChange(error == null)
             },
-            label = "Password",
+            label = "Email",
             modifier = Modifier
                 .fillMaxWidth()
                 .focusRequester(focusRequester),
