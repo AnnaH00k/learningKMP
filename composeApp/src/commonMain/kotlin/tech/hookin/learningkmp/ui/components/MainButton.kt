@@ -27,6 +27,9 @@ fun MainButton(
     val backgroundColor = backgroundColorHex?.let { HexToColor(it) } ?: Color(0xFF435A4D)
     val textColor = textColorHex?.let { HexToColor(it) } ?: Color(0xFFEDF5EE)
     val borderColor = borderColorHex?.let { HexToColor(it) } ?: Color(0xFF202226)
+    val disabledOutlineColor = Color(0x435A4D)
+    val currentBorderColor = if (enabled) borderColor else disabledOutlineColor
+
 
     Box(
         modifier = modifier
@@ -39,9 +42,9 @@ fun MainButton(
                 containerColor = backgroundColor,
                 contentColor = textColor,
                 disabledContainerColor = backgroundColor.copy(alpha = 0.3f),
-                disabledContentColor = textColor.copy(alpha = 0.5f)
+                disabledContentColor = textColor.copy(alpha = 0.5f),
             ),
-            border = BorderStroke(1.dp, borderColor),
+            border = BorderStroke(1.dp, currentBorderColor),
         ) {
             Text(
                 text = text,
